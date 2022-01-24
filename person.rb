@@ -29,6 +29,5 @@ class Person
   end
 end
 
-
 person = Person.new(25, 'you-wei-adam-chang')
 person.validate_name
