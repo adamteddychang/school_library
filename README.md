@@ -28,7 +28,7 @@ git clone https://github.com/adamteddychang/school_library.git
 👤 **You-Wei (Adam) Chang** 
 - GitHub: [@adamteddychang](https://github.com/adamteddychang)
 - Twitter: [@AdamChang3](https://twitter.com/AdamChang3) 
-
+- LinkedIn: [You-Wei(Adam) Chang](https://www.linkedin.com/in/adamteddychang/)
 
 
 
