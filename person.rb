@@ -27,7 +27,6 @@ class Person
   def validate_name
     @name = @corrector.correct_name(name)
   end
-
 end
 
 person = Person.new(25, 'you-wei-adam-chang')
