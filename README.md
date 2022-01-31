@@ -14,10 +14,12 @@
 
 To get a local copy up and running follow these simple example steps.
 
-Clone the project by using terminal:
-
-
-git clone https://github.com/adamteddychang/school_library.git
+- copy this link `https://github.com/adamteddychang/school_library.git`.
+- get the directory that you want to clone the repository.
+- open the command prompt in this directory.
+- write `git clone https://github.com/adamteddychang/school_library.git`.
+- go to the repository folder in your command prompt.
+- run `bundle install`.
 
 ### Prerequisites
 
@@ -29,6 +31,11 @@ git clone https://github.com/adamteddychang/school_library.git
 - GitHub: [@adamteddychang](https://github.com/adamteddychang)
 - Twitter: [@AdamChang3](https://twitter.com/AdamChang3) 
 - LinkedIn: [You-Wei(Adam) Chang](https://www.linkedin.com/in/adamteddychang/)
+
+👤 **Okpara Tochukwu**
+
+- GitHub: [@xtrahuman](https://github.com/xtrahuman)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/tochukwuokpara)
 
 
 
