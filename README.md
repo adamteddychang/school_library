@@ -32,6 +32,11 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@AdamChang3](https://twitter.com/AdamChang3) 
 - LinkedIn: [You-Wei(Adam) Chang](https://www.linkedin.com/in/adamteddychang/)
 
+👤 **Okpara Tochukwu**
+
+- GitHub: [@xtrahuman](https://github.com/xtrahuman)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/tochukwuokpara)
+
 
 
 ## 🤝 Contributing
