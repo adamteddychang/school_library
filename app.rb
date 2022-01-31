@@ -4,36 +4,16 @@ require_relative 'book'
 require_relative 'classroom'
 require_relative 'teacher'
 require_relative 'rental'
+require_relative 'methods/create_person'
 
 class App
   def initialize
     @people = []
     @books = []
     @rentals = []
-  end
-
-  def start
-    puts 'Welcome to our School Library!'
-    loop do
-      menu
-      option = gets.chomp
-      break if option == '7'
-
-      get_num option
-    end
-    puts 'Thank you for using our Library!'
-  end
-
-  def menu
-    puts
-    puts 'Please choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
-    puts '6 - List all rentals for a given person id'
-    puts '7 - Exit'
+    @age = ''
+    @name = ''
+    @CreatePerson = CreatePerson.new
   end
 
   def get_num(option)
@@ -43,7 +23,7 @@ class App
     when '2'
       list_all_people
     when '3'
-      create_person
+      @CreatePerson.person_option
     when '4'
       create_book
     when '5'
@@ -68,31 +48,11 @@ class App
     sleep 0.75
   end
 
-  def create_person
-    print 'Would you like to create a student(1) or a teacher(2) [Please input a number]: '
-    option = gets.chomp
-
-    case option
-    when '1'
-      create_student
-    when '2'
-      create_teacher
-    else
-      puts 'Invalid input. Please input 1 or 2'
-    end
-  end
-
   def create_student
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Name: '
-    name = gets.chomp
-
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase
 
-    student = Student.new(@class, age, name, parent_permission)
+    student = Student.new(@class, @age, @name, parent_permission)
     @people << student
 
     puts 'Student created successfully'
@@ -100,16 +60,10 @@ class App
   end
 
   def create_teacher
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Name: '
-    name = gets.chomp
-
     print 'Specialization: '
     specialization = gets.chomp
 
-    teacher = Teacher.new(age, specialization, name)
+    teacher = Teacher.new(@age, specialization, @name)
     @people << teacher
 
     puts 'Teacher created successfully'
