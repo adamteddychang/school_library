@@ -1,5 +1,6 @@
 require_relative 'create_student'
 require_relative 'create_teacher'
+require_relative 'input'
 
 class CreatePerson
   def initialize(people)
@@ -7,11 +8,12 @@ class CreatePerson
     @age = ''
     @name = ''
     @option = ''
+    @input = Input.new
   end
 
   def person_option
     print 'Would you like to create a student(1) or a teacher(2) [Please input a number]: '
-    @option = gets.chomp
+    @option = @input.read
 
     ask_nameage
     case @option
@@ -29,8 +31,8 @@ end
 
 def ask_nameage
   print 'Age: '
-  @age = gets.chomp.to_i
+  @age = @input.read.to_i
 
   print 'Name: '
-  @name = gets.chomp
+  @name = @input.read
 end

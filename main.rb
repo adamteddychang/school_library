@@ -1,14 +1,16 @@
 require_relative 'app'
+require_relative 'methods/input'
 class Main
   def initialize
     @app = App.new
+    @input = Input.new
   end
 
   def start
     puts 'Welcome to our School Library!'
     loop do
       menu
-      option = gets.chomp
+      option = @input.read
       break if option == '7'
 
       @app.get_num(option)

@@ -7,14 +7,14 @@ class CreateStudent
     @name = name
   end
 
-def my_permission
+  def my_permission
     print 'Has parent permission? [Y/N]: '
     parent_permission = @input.read.downcase
 
-   student = Student.new(@class, @age, @name, parent_permission)
-   @people << student
+    student = Student.new(@class, @age, @name, parent_permission)
+    @people << student
 
-  puts 'Student created successfully'
-  sleep 0.75
-end
+    puts 'Student created successfully'
+    sleep 0.75
+  end
 end

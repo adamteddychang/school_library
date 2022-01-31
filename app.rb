@@ -5,6 +5,9 @@ require_relative 'classroom'
 require_relative 'teacher'
 require_relative 'rental'
 require_relative 'methods/create_person'
+require_relative 'methods/input'
+require_relative 'methods/create_book'
+require_relative 'methods/create_rental'
 
 class App
   def initialize
@@ -13,7 +16,10 @@ class App
     @rentals = []
     @age = ''
     @name = ''
-    @CreatePerson = CreatePerson.new(@people)
+    @create_person = CreatePerson.new(@people)
+    @create_book = CreateBook.new(@books)
+    @create_rental = CreateRental.new(@books, @people, @rentals)
+    @input = Input.new
   end
 
   def get_num(option)
@@ -23,11 +29,11 @@ class App
     when '2'
       list_all_people
     when '3'
-      @CreatePerson.person_option
+      @create_person.person_option
     when '4'
-      create_book
+      @create_book.newbook
     when '5'
-      create_rental
+      @create_rental.new_rent
     when '6'
       list_rentals_by_person_id
     else
@@ -47,48 +53,11 @@ class App
     @people.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     sleep 0.75
   end
-
-  def create_book
-    print 'Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-    @books << book
-
-    puts 'Book added successfully'
-    sleep 0.75
-  end
-end
-
-def create_rental
-  puts 'Select a book from the following list by number'
-  @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-
-  book_id = gets.chomp.to_i
-
-  puts 'Select a person from the following list by number (not id)'
-  @people.each_with_index do |person, index|
-    puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-  end
-
-  person_id = gets.chomp.to_i
-
-  print 'Date: '
-  date = gets.chomp.to_s
-
-  rental = Rental.new(date, @books[book_id], @people[person_id])
-  @rentals << rental
-
-  puts 'Rental created successfully'
-  sleep 0.75
 end
 
 def list_rentals_by_person_id
   print 'ID of person: '
-  id = gets.chomp.to_i
+  id = @input.read.to_i
 
   puts 'Rentals:'
   @rentals.each do |rental|
