@@ -13,7 +13,7 @@ class App
     @rentals = []
     @age = ''
     @name = ''
-    @CreatePerson = CreatePerson.new
+    @CreatePerson = CreatePerson.new(@people)
   end
 
   def get_num(option)
@@ -45,28 +45,6 @@ class App
   def list_all_people
     puts 'No people in the database! Please add a person.' if @people.empty?
     @people.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
-    sleep 0.75
-  end
-
-  def create_student
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.downcase
-
-    student = Student.new(@class, @age, @name, parent_permission)
-    @people << student
-
-    puts 'Student created successfully'
-    sleep 0.75
-  end
-
-  def create_teacher
-    print 'Specialization: '
-    specialization = gets.chomp
-
-    teacher = Teacher.new(@age, specialization, @name)
-    @people << teacher
-
-    puts 'Teacher created successfully'
     sleep 0.75
   end
 
