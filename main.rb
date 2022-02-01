@@ -4,6 +4,7 @@ class Main
   def initialize
     @app = App.new
     @input = Input.new
+
   end
 
   def start
@@ -15,6 +16,7 @@ class Main
 
       @app.get_num(option)
     end
+    # @app.rundata
     puts 'Thank you for using our Library!'
   end
 
