@@ -18,12 +18,12 @@ class CreateRental
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
 
-    person_id = @input.read.to_i
+    id = @input.read.to_i
 
     print 'Date: '
     date = @input.read.to_s
 
-    rental = Rental.new(date, @books[book_id], @people[person_id])
+    rental = Rental.new(date, @books[book_id], @people[id])
     @rentals << rental
 
     puts 'Rental created successfully'

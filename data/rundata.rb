@@ -19,7 +19,7 @@ class Data
     path = 'data/people.json'
     ppljson = []
     @people.each do |person|
-      ppljson.push({Name: person.name, Age: person.age})
+      ppljson.push({class: person.class, name: person.name, id: person.id, age: person.age})
     end
     File.open(path, 'w') do |file|
       JSON.dump(ppljson, file)
@@ -31,7 +31,7 @@ class Data
     path = 'data/books.json'
     booksjson = []
     @books.each do |book|
-      booksjson.push({Title: book.title, Author: book.author})
+      booksjson.push({title: book.title, author: book.author})
     end
     File.open(path, 'w') do |file|
       JSON.dump(booksjson, file)
@@ -43,8 +43,8 @@ class Data
     rentalsjson = []
     @rentals.each do |rental|
       
-      rentalsjson.push({Date:Time.now, Person: rental.person.id , Book: rental.book.title}) 
-
+      # rentalsjson.push({date: rental.date , id: rental.person.id , title: rental.book.title, author: rental.book.author}) 
+      rentalsjson.push({Date:Time.now, Person: rental.person.id , Book: rental.book.title})
     end
     File.open(path, 'w') do |file|
       JSON.dump(rentalsjson, file)

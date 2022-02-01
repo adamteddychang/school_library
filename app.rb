@@ -10,12 +10,13 @@ require_relative 'methods/input'
 require_relative 'methods/create_book'
 require_relative 'methods/create_rental'
 require_relative 'data/rundata.rb'
+require_relative 'data/read_data'
 
 class App
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
+    @people = ReadData.new.read_people
+    @books = ReadData.new.read_books
+    @rentals =[]
     @age = ''
     @name = ''
     @create_person = CreatePerson.new(@people)
@@ -53,14 +54,13 @@ class App
 
   def list_all_books
     puts 'No books in the database! Please add a book.' if @books.empty?
-    @run_data.save_books
     @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     sleep 0.75
   end
 
   def list_all_people
-    puts 'No people in the database! Please add a person.' if @people.empty?    
-    @run_data.save_ppl
+    puts 'No people in the database! Please add a person.' if @people.empty?
+    puts @people[0]    
     @people.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     sleep 0.75
   end
@@ -69,10 +69,9 @@ end
 def list_rentals_by_person_id
   print 'ID of person: '
   id = @input.read.to_i
-  @run_data.save_rentals
   puts 'Rentals:'
   @rentals.each do |rental|
-    puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
+    puts "Date: #{rental.date}, Book '#{rental.title}' by #{rental.author}" if rental.id == id
   end
   sleep 0.75
 end
