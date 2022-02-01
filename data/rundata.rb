@@ -43,8 +43,8 @@ class Data
     rentalsjson = []
     @rentals.each do |rental|
       
-      # rentalsjson.push({date: rental.date , id: rental.person.id , title: rental.book.title, author: rental.book.author}) 
-      rentalsjson.push({Date:Time.now, Person: rental.person.id , Book: rental.book.title})
+      rentalsjson.push({date: rental.date , id: rental.person.id , title: rental.book.title, author: rental.book.author}) 
+      # rentalsjson.push({Date:Time.now, ids: rental.person.id , Book: rental.book.title})
     end
     File.open(path, 'w') do |file|
       JSON.dump(rentalsjson, file)

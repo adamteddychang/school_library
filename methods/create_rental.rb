@@ -24,7 +24,7 @@ class CreateRental
     date = @input.read.to_s
 
     rental = Rental.new(date, @books[book_id], @people[id])
-    @rentals << rental
+    @rentals.push(rental)
 
     puts 'Rental created successfully'
     sleep 0.75

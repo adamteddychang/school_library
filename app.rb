@@ -15,8 +15,10 @@ require_relative 'data/read_data'
 class App
   def initialize
     @people = ReadData.new.read_people
+    # @people = []
     @books = ReadData.new.read_books
-    @rentals =[]
+    # @books = []
+    @rentals =ReadData.new.read_rentals
     @age = ''
     @name = ''
     @create_person = CreatePerson.new(@people)
@@ -60,13 +62,14 @@ class App
 
   def list_all_people
     puts 'No people in the database! Please add a person.' if @people.empty?
-    puts @people[0]    
+    puts @people[0]   
     @people.map { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     sleep 0.75
   end
 end
 
 def list_rentals_by_person_id
+    puts @rentals
   print 'ID of person: '
   id = @input.read.to_i
   puts 'Rentals:'
