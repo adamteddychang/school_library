@@ -19,14 +19,11 @@ class Person
   end
 
   def ofage?
-    age >= 18   
+    age >= 18
   end
-
-  public
 
   def use_services?
     ofage? || parent_permission
-    
   end
 
   def validate_name
