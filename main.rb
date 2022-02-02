@@ -4,7 +4,6 @@ class Main
   def initialize
     @app = App.new
     @input = Input.new
-
   end
 
   def start

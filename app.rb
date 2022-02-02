@@ -9,7 +9,7 @@ require_relative 'methods/create_person'
 require_relative 'methods/input'
 require_relative 'methods/create_book'
 require_relative 'methods/create_rental'
-require_relative 'data/rundata.rb'
+require_relative 'data/rundata'
 require_relative 'data/read_data'
 
 class App
@@ -45,12 +45,11 @@ class App
     end
   end
 
-  def savedata 
+  def savedata
     @run_data.save_ppl
     @run_data.save_books
     @run_data.save_rentals
   end
-
 
   def list_all_books
     puts 'No books in the database! Please add a book.' if @books.empty?
@@ -66,15 +65,15 @@ class App
 end
 
 def list_rentals_by_person_id
-    puts @rentals
+  puts @rentals
   print 'ID of person: '
   id = @input.read.to_i
   puts 'Rentals:'
   @rentals.each do |rental|
     puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
   end
-#   @saved_rentals.each do |rental|
-#     puts "Date: #{rental.date}, Book '#{rental.title}' by #{rental.author}" if rental.id == id
-#   end
+  #   @saved_rentals.each do |rental|
+  #     puts "Date: #{rental.date}, Book '#{rental.title}' by #{rental.author}" if rental.id == id
+  #   end
   sleep 0.75
 end

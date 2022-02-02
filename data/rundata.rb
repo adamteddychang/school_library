@@ -6,10 +6,10 @@ require_relative '../classroom'
 require_relative '../teacher'
 require_relative '../rental'
 
-class Data 
+class Data
   def initialize(people, books, rentals)
     @people = people
-    @books = books 
+    @books = books
     @rentals = rentals
     @age = ''
     @name = ''
@@ -19,19 +19,18 @@ class Data
     path = 'data/people.json'
     ppljson = []
     @people.each do |person|
-      ppljson.push({class: person.class, name: person.name, id: person.id, age: person.age})
+      ppljson.push({ class: person.class, name: person.name, id: person.id, age: person.age })
     end
     File.open(path, 'w') do |file|
       JSON.dump(ppljson, file)
     end
-    
-  end 
+  end
 
   def save_books
     path = 'data/books.json'
     booksjson = []
     @books.each do |book|
-      booksjson.push({title: book.title, author: book.author})
+      booksjson.push({ title: book.title, author: book.author })
     end
     File.open(path, 'w') do |file|
       JSON.dump(booksjson, file)
@@ -42,12 +41,11 @@ class Data
     path = 'data/rental.json'
     rentalsjson = []
     @rentals.each do |rental|
-      rentalsjson.push({date: rental.date , person:{id: rental.person.id} , book:{title: rental.book.title, author: rental.book.author}}) 
+      rentalsjson.push({ date: rental.date, person: { id: rental.person.id },
+                         book: { title: rental.book.title, author: rental.book.author } })
     end
     File.open(path, 'w') do |file|
       JSON.dump(rentalsjson, file)
     end
-
   end
-
 end
