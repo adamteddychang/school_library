@@ -22,7 +22,6 @@ class CreateRental
 
     print 'Date: '
     puts date = Time.new.strftime('%d/%m/%Y')
-    # date = @input.read.to_s
     rental = Rental.new(date, @books[book_id], @people[id])
     @rentals.push(rental)
 

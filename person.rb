@@ -18,16 +18,15 @@ class Person
     Rental.new(date, book, self)
   end
 
-  private
-
   def ofage?
-    return true unless age < 18
+    age >= 18   
   end
 
   public
 
   def use_services?
-    return true if ofage? || parent_permission
+    ofage? || parent_permission
+    
   end
 
   def validate_name
