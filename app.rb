@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'person'
 require_relative 'student'
 require_relative 'book'
@@ -8,17 +9,20 @@ require_relative 'methods/create_person'
 require_relative 'methods/input'
 require_relative 'methods/create_book'
 require_relative 'methods/create_rental'
+require_relative 'data/rundata'
+require_relative 'data/read_data'
 
 class App
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
+    @people = ReadData.new.read_people
+    @books = ReadData.new.read_books
+    @rentals = ReadData.new.read_rentals
     @age = ''
     @name = ''
     @create_person = CreatePerson.new(@people)
     @create_book = CreateBook.new(@books)
     @create_rental = CreateRental.new(@books, @people, @rentals)
+    @run_data = Data.new(@people, @books, @rentals)
     @input = Input.new
   end
 
@@ -41,9 +45,14 @@ class App
     end
   end
 
+  def savedata
+    @run_data.save_ppl
+    @run_data.save_books
+    @run_data.save_rentals
+  end
+
   def list_all_books
     puts 'No books in the database! Please add a book.' if @books.empty?
-
     @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     sleep 0.75
   end
@@ -56,12 +65,13 @@ class App
 end
 
 def list_rentals_by_person_id
+  puts @rentals
   print 'ID of person: '
   id = @input.read.to_i
-
   puts 'Rentals:'
   @rentals.each do |rental|
     puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
   end
+
   sleep 0.75
 end

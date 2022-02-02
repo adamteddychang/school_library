@@ -15,6 +15,7 @@ class Main
 
       @app.get_num(option)
     end
+    @app.savedata
     puts 'Thank you for using our Library!'
   end
 
