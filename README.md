@@ -13,13 +13,15 @@
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-
 - copy this link `https://github.com/adamteddychang/school_library.git`.
 - get the directory that you want to clone the repository.
 - open the command prompt in this directory.
 - write `git clone https://github.com/adamteddychang/school_library.git`.
 - go to the repository folder in your command prompt.
 - run `bundle install`.
+
+## To run the tests
+- Add to the terminal `rspec spec spec/filename.rb`
 
 ### Prerequisites
 
