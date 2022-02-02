@@ -72,8 +72,6 @@ def list_rentals_by_person_id
   @rentals.each do |rental|
     puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
   end
-  #   @saved_rentals.each do |rental|
-  #     puts "Date: #{rental.date}, Book '#{rental.title}' by #{rental.author}" if rental.id == id
-  #   end
+
   sleep 0.75
 end
